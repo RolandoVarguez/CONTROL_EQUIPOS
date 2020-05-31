@@ -1,0 +1,79 @@
+﻿@model ControlEquipos.Web.Models.Team
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Team</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeamName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeamName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FoundationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoundationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Championships)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Championships)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </dt>
+
+        <dd>
+            <div class="form-horizontal">
+                <p>
+
+                    <img src="@Url.Action("getImage","Teams", new { Id = Model.Id })" width="380" height="380" />
+                    <br />
+                    @Html.DisplayFor(model => model.Imagen, "", new { @class = "text-danger" })
+
+                    <h3 class="text-center">
+                        Imagen del Producto
+                    </h3>
+
+                </p>
+
+            </div>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
