@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<ControlEquipos.Web.Models.Player>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "FullPlayers";
 }
 
-<h2>Index</h2>
+<h2>FullPlayers</h2>
 
-<p>
 
-</p>
 <table class="table">
     <tr>
         <th>
@@ -26,7 +24,9 @@
         <th>
             @Html.DisplayNameFor(model => model.BornDate)
         </th>
-
+        <th>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.About)
         </th>
@@ -36,7 +36,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            <a href="@Url.Action("PlayersByTeam","Players", new {teamId=item.TeamID })">@item.Team.TeamName</a>
+            @Html.DisplayFor(modelItem => item.Team.TeamName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PlayerName)
@@ -50,7 +50,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.BornDate)
         </td>
-
+        <td>
+            @Html.DisplayFor(modelItem => item.Imagen)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.About)
         </td>

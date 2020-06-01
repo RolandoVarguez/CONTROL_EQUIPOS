@@ -28,10 +28,7 @@ namespace ControlEquipos.Web.Controllers
         // GET: Stadiums
         public ActionResult Index()
         {
-            var user = User.Identity.GetUserId();
-            var ow = db.Owners.Where(o => o.UserId == user).FirstOrDefault();
-            var estadio = db.Stadiums.Include(u => u.Owner).Where(p => p.OwnerID == ow.Id).ToList();
-
+           
             var stadiums = db.Stadiums.Include(s => s.Owner);
             return View(stadiums.ToList());
         }

@@ -182,5 +182,7 @@ namespace ControlEquipos.Web.Controllers
 
 
         }
+
+
     }
 }

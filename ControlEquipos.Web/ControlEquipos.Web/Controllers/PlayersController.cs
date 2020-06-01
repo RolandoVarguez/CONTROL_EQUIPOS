@@ -183,7 +183,12 @@ namespace ControlEquipos.Web.Controllers
 
             return File(memoryStream, "img/jpg");
 
+        }
 
+        public ActionResult PlayersByTeam(int teamId)
+        {
+            var players = db.Players.Where(p => p.TeamID == teamId).ToList();
+            return View(players);
         }
     }
 }

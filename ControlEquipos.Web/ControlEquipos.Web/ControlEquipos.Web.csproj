@@ -374,8 +374,15 @@
     <Content Include="Views\Teams\Index.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
-    <Content Include="Views\Stadiums\AllStadiums.cshtml" />
+    <Content Include="Views\Stadiums\FullStadiums.cshtml" />
     <Content Include="Views\Teams\AllTeams.cshtml" />
+    <Content Include="Views\Players\PlayersByTeam.cshtml" />
+    <Content Include="Views\Players\FullPlayers.cshtml" />
+    <Content Include="Views\Teams\FullTeams.cshtml" />
+    <Content Include="Views\Players\FullPlayersByTeam.cshtml" />
+    <Content Include="Views\Teams\FullDetails.cshtml" />
+    <Content Include="Views\Stadiums\FullDetails.cshtml" />
+    <Content Include="Views\Players\FullDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<ControlEquipos.Web.Models.Team>
 
 @{
-    ViewBag.Title = "AllTeams";
+    ViewBag.Title = "FullTeams";
 }
 
-<h2>AllTeams</h2>
+<h2>FullTeams</h2>
 
-<p>
 
-</p>
 <table class="table">
     <tr>
         <th>
@@ -53,7 +51,7 @@
             @Html.DisplayFor(modelItem => item.Imagen)
         </td>
         <td>
-           
+
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
 
         </td>
