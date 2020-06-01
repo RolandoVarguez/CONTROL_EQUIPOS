@@ -8,8 +8,10 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using ControlEquipos.Web.Models;
+using Microsoft.AspNet.Identity;
 
 namespace ControlEquipos.Web.Controllers
 {
@@ -19,12 +21,17 @@ namespace ControlEquipos.Web.Controllers
 
         public ActionResult AllStadiums()
         {
-            var pets = db.Stadiums.Include(o => o.Owner).Include(u => u.Owner.ApplicationUser).ToList();
-            return View(pets);
+            var estadio = db.Stadiums.Include(o => o.Owner).Include(u => u.Owner.ApplicationUser).ToList();
+            return View(estadio);
         }
+
         // GET: Stadiums
         public ActionResult Index()
         {
+            var user = User.Identity.GetUserId();
+            var ow = db.Owners.Where(o => o.UserId == user).FirstOrDefault();
+            var estadio = db.Stadiums.Include(u => u.Owner).Where(p => p.OwnerID == ow.Id).ToList();
+
             var stadiums = db.Stadiums.Include(s => s.Owner);
             return View(stadiums.ToList());
         }
@@ -41,12 +48,16 @@ namespace ControlEquipos.Web.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Owner = (from o in db.Owners
+                             select o).ToList();
             return View(stadium);
         }
 
         // GET: Stadiums/Create
         public ActionResult Create()
         {
+            ViewBag.Owner = (from o in db.Owners
+                             select o).ToList();
             ViewBag.OwnerID = new SelectList(db.Owners, "Id", "UserId");
             return View();
         }
@@ -58,6 +69,22 @@ namespace ControlEquipos.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,StadiumName,InaugurationDate,Capacity,OwnerID,Imagen,About")] Stadium stadium)
         {
+            byte[] imagenActual = null;
+            HttpPostedFileBase FileBase = Request.Files[0];
+
+            if (FileBase == null)
+            {
+                imagenActual = db.Teams.SingleOrDefault(t => t.Id == stadium.Id).Imagen;
+            }
+
+            else
+            {
+                WebImage image = new WebImage(FileBase.InputStream);
+
+                stadium.Imagen = image.GetBytes();
+            }
+
+
             if (ModelState.IsValid)
             {
                 db.Stadiums.Add(stadium);
@@ -92,6 +119,22 @@ namespace ControlEquipos.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,StadiumName,InaugurationDate,Capacity,OwnerID,Imagen,About")] Stadium stadium)
         {
+            byte[] imagenActual = null;
+            HttpPostedFileBase FileBase = Request.Files[0];
+
+            if (FileBase == null)
+            {
+                imagenActual = db.Teams.SingleOrDefault(t => t.Id == stadium.Id).Imagen;
+            }
+
+            else
+            {
+                WebImage image = new WebImage(FileBase.InputStream);
+
+                stadium.Imagen = image.GetBytes();
+            }
+
+
             if (ModelState.IsValid)
             {
                 db.Entry(stadium).State = EntityState.Modified;
@@ -153,5 +196,6 @@ namespace ControlEquipos.Web.Controllers
 
 
         }
+
     }
 }

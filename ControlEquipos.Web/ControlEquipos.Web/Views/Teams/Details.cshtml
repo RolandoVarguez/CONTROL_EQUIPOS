@@ -15,7 +15,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Owner.UserId)
+            @Html.DisplayFor(model => model.Owner.Id)
         </dd>
 
         <dt>
@@ -57,15 +57,8 @@
         <dd>
             <div class="form-horizontal">
                 <p>
-
                     <img src="@Url.Action("getImage","Teams", new { Id = Model.Id })" width="380" height="380" />
                     <br />
-                    @Html.DisplayFor(model => model.Imagen, "", new { @class = "text-danger" })
-
-                    <h3 class="text-center">
-                        Imagen del Producto
-                    </h3>
-
                 </p>
 
             </div>

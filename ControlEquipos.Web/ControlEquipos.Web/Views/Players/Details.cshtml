@@ -9,7 +9,7 @@
 <div>
     <h4>Player</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <div class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Team.TeamName)
         </dt>
@@ -55,8 +55,12 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Imagen)
+            <p>
+                <img src="@Url.Action("getImage","Teams", new { Id = Model.Id })" width="380" height="380" />
+                <br />
+            </p>
         </dd>
+
 
         <dt>
             @Html.DisplayNameFor(model => model.About)
@@ -66,7 +70,8 @@
             @Html.DisplayFor(model => model.About)
         </dd>
 
-    </dl>
+        </dl>
+    </div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

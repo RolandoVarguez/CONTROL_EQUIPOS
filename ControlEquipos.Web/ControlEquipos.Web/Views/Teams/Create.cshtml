@@ -33,8 +33,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.OwnerID, "OwnerID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("OwnerID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.OwnerID, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.OwnerID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.OwnerID, "", new { @class = "text-danger" })
             </div>
         </div>
 

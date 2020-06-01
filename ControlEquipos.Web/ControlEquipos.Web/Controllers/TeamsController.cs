@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using ControlEquipos.Web.Models;
 using Microsoft.AspNet.Identity;
@@ -45,12 +46,16 @@ namespace ControlEquipos.Web.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Owner = (from o in db.Owners
+                                select o).ToList();
             return View(team);
         }
 
         // GET: Teams/Create
         public ActionResult Create()
         {
+            ViewBag.Owner = (from o in db.Owners
+                             select o).ToList();
             ViewBag.OwnerID = new SelectList(db.Owners, "Id", "UserId");
             return View();
         }
@@ -62,6 +67,12 @@ namespace ControlEquipos.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,TeamName,FoundationDate,OwnerID,Location,Championships,Imagen")] Team team)
         {
+            HttpPostedFileBase FileBase = Request.Files[0];
+
+            WebImage image = new WebImage(FileBase.InputStream);
+
+            team.Imagen = image.GetBytes();
+
             if (ModelState.IsValid)
             {
                 db.Teams.Add(team);
@@ -98,6 +109,21 @@ namespace ControlEquipos.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                byte[] imagenActual = null;
+                HttpPostedFileBase FileBase = Request.Files[0];
+
+                if (FileBase == null)
+                {
+                    imagenActual = db.Teams.SingleOrDefault(t => t.Id == team.Id).Imagen;
+                }
+
+                else
+                {
+                    WebImage image = new WebImage(FileBase.InputStream);
+
+                    team.Imagen = image.GetBytes();
+                }
+
                 db.Entry(team).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

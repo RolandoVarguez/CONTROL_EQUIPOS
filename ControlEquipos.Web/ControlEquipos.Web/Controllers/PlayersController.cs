@@ -8,8 +8,10 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using ControlEquipos.Web.Models;
+using Microsoft.AspNet.Identity;
 
 namespace ControlEquipos.Web.Controllers
 {
@@ -17,7 +19,8 @@ namespace ControlEquipos.Web.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Players
+
+        //GET: Players
         public ActionResult Index()
         {
             var players = db.Players.Include(p => p.Team);
@@ -36,12 +39,16 @@ namespace ControlEquipos.Web.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Team = (from t in db.Owners
+                             select t).ToList();
             return View(player);
         }
 
         // GET: Players/Create
         public ActionResult Create()
         {
+            ViewBag.Team = (from t in db.Owners
+                            select t).ToList();
             ViewBag.TeamID = new SelectList(db.Teams, "Id", "TeamName");
             return View();
         }
@@ -53,6 +60,21 @@ namespace ControlEquipos.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,PlayerName,PlayerLastName,Nationality,BornDate,TeamID,Imagen,About")] Player player)
         {
+            byte[] imagenActual = null;
+            HttpPostedFileBase FileBase = Request.Files[0];
+
+            if (FileBase == null)
+            {
+                imagenActual = db.Teams.SingleOrDefault(t => t.Id == player.Id).Imagen;
+            }
+
+            else
+            {
+                WebImage image = new WebImage(FileBase.InputStream);
+
+                player.Imagen = image.GetBytes();
+            }
+
             if (ModelState.IsValid)
             {
                 db.Players.Add(player);
@@ -87,6 +109,21 @@ namespace ControlEquipos.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,PlayerName,PlayerLastName,Nationality,BornDate,TeamID,Imagen,About")] Player player)
         {
+            byte[] imagenActual = null;
+            HttpPostedFileBase FileBase = Request.Files[0];
+
+            if (FileBase == null)
+            {
+                imagenActual = db.Teams.SingleOrDefault(t => t.Id == player.Id).Imagen;
+            }
+
+            else
+            {
+                WebImage image = new WebImage(FileBase.InputStream);
+
+                player.Imagen = image.GetBytes();
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(player).State = EntityState.Modified;

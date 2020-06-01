@@ -47,7 +47,13 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Imagen)
+            <div class="form-horizontal">
+                <p>
+                    <img src="@Url.Action("getImage","Stadiums", new { Id = Model.Id })" width="380" height="380" />
+                    <br />
+                </p>
+
+            </div>
         </dd>
 
         <dt>
