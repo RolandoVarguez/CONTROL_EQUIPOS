@@ -19,6 +19,7 @@ namespace ControlEquipos.Web.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+
         public ActionResult AllStadiums()
         {
             var estadio = db.Stadiums.Include(o => o.Owner).Include(u => u.Owner.ApplicationUser).ToList();
@@ -26,6 +27,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Stadiums
+        [Authorize]
         public ActionResult Index()
         {
            
@@ -34,6 +36,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Stadiums/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -51,6 +54,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Stadiums/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.Owner = (from o in db.Owners
@@ -94,6 +98,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Stadiums/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -143,6 +148,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Stadiums/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -192,6 +198,31 @@ namespace ControlEquipos.Web.Controllers
             return File(memoryStream, "img/jpg");
 
 
+        }
+
+        public ActionResult FullStadiums()
+        {
+
+            var stadiums = db.Stadiums.Include(s => s.Owner);
+            return View(stadiums.ToList());
+        }
+
+        // GET: Stadiums/Details/5
+        [Authorize]
+        public ActionResult FullDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Stadium stadium = db.Stadiums.Find(id);
+            if (stadium == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Owner = (from o in db.Owners
+                             select o).ToList();
+            return View(stadium);
         }
 
     }

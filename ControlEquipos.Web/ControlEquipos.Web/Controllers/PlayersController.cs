@@ -21,6 +21,7 @@ namespace ControlEquipos.Web.Controllers
 
 
         //GET: Players
+        [Authorize]
         public ActionResult Index()
         {
             var players = db.Players.Include(p => p.Team);
@@ -28,6 +29,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Players/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -45,6 +47,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Players/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.Team = (from t in db.Owners
@@ -87,6 +90,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Players/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -135,6 +139,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Players/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -184,11 +189,40 @@ namespace ControlEquipos.Web.Controllers
             return File(memoryStream, "img/jpg");
 
         }
-
+        [Authorize]
         public ActionResult PlayersByTeam(int teamId)
         {
             var players = db.Players.Where(p => p.TeamID == teamId).ToList();
             return View(players);
         }
+        public ActionResult FullPlayersByTeam(int teamId)
+        {
+            var players = db.Players.Where(p => p.TeamID == teamId).ToList();
+            return View(players);
+        }
+
+        public ActionResult FullPlayers()
+        {
+            var players = db.Players.Include(p => p.Team);
+            return View(players.ToList());
+        }
+
+        public ActionResult FullDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Player player = db.Players.Find(id);
+            if (player == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Team = (from t in db.Owners
+                            select t).ToList();
+            return View(player);
+        }
+
+
     }
 }

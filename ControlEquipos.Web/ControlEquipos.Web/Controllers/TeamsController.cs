@@ -25,6 +25,7 @@ namespace ControlEquipos.Web.Controllers
             return View(pets);
         }
         // GET: Teams
+        [Authorize]
         public ActionResult Index()
         {
             var user = User.Identity.GetUserId();
@@ -35,6 +36,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Teams/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -52,6 +54,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Teams/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.Owner = (from o in db.Owners
@@ -85,6 +88,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Teams/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -133,6 +137,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Teams/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -182,6 +187,37 @@ namespace ControlEquipos.Web.Controllers
 
 
         }
+
+        public ActionResult FullTeams()
+        {
+            var user = User.Identity.GetUserId();
+            var ow = db.Owners.Where(o => o.UserId == user).FirstOrDefault();
+            var equipos = db.Teams.Include(u => u.Owner).Where(p => p.OwnerID == ow.Id).ToList();
+
+            return View(equipos);
+        }
+
+        // GET: Teams/Details/5
+        
+        public ActionResult FullDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Team team = db.Teams.Find(id);
+            if (team == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Owner = (from o in db.Owners
+                             select o).ToList();
+
+            return View(team);
+        }
+
+
+
 
 
     }

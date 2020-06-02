@@ -1,4 +1,4 @@
-﻿@model ControlEquipos.Web.Models.Stadium
+﻿@model IEnumerable<ControlEquipos.Web.Models.Stadium>
 
 @{
     ViewBag.Title = "FullDetails";
@@ -6,60 +6,58 @@
 
 <h2>FullDetails</h2>
 
-<div>
-    <h4>Stadium</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Owner.UserId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Owner.UserId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StadiumName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StadiumName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.InaugurationDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.InaugurationDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Capacity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Capacity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Imagen)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.About)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.About)
-        </dd>
-
-    </dl>
-</div>
 <p>
-    @Html.ActionLink("Back to List", "FullStadiums")
+    @Html.ActionLink("Create New", "Create")
 </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Owner.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StadiumName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InaugurationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.About)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owner.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StadiumName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InaugurationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Capacity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Imagen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.About)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

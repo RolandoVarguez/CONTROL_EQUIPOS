@@ -1,4 +1,4 @@
-﻿@model ControlEquipos.Web.Models.Player
+﻿@model IEnumerable<ControlEquipos.Web.Models.Player>
 
 @{
     ViewBag.Title = "FullDetails";
@@ -6,69 +6,64 @@
 
 <h2>FullDetails</h2>
 
-<div>
-    <h4>Player</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Team.TeamName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Team.TeamName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PlayerName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PlayerName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PlayerLastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PlayerLastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nationality)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nationality)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BornDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BornDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Imagen)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.About)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.About)
-        </dd>
-
-    </dl>
-</div>
 <p>
-
-    @Html.ActionLink("Back to List", "FullPlayers")
+    @Html.ActionLink("Create New", "Create")
 </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Team.TeamName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlayerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlayerLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nationality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BornDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.About)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Team.TeamName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlayerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlayerLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nationality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BornDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Imagen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.About)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
