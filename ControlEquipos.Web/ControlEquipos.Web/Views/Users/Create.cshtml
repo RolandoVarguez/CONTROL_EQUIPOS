@@ -4,28 +4,32 @@
 }
 
     <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card mb-3 m-3">
-                <div class="card-header primary-color">
-                    <h6 class="m-0 text-white text-center">Nuevo Usuario</h6>
-                </div>
-                <div class="card-body">
-                    <form action="@Url.Action("Create","Users")" method="post">
+        <div class="col-md-10 m-5">
+            <div class="card mb-3 m-2">
+                <div class="card-header primary-color bg-danger"></div>
+        
 
+                <div class="card-body m-4">
+                    <form action="@Url.Action("Create","Users")" method="post">
+                        <center>
+                            <h2><b>Registrar Usuario al Sistema</b></h2>
+                            <hr />
+                        </center>
+                        <br />
                         <div class="form-group">
-                            <label class="col-md-4">Email</label>
+                            <label class="col-md-4"><b>Correo Electronico:</b></label>
                             <div class="col-md-10">
                                 <input type="email" name="Email" value="" class="form-control" required />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-4">Contraseña</label>
+                            <label class="col-md-4"><b>Contraseña</b></label>
                             <div class="col-md-10">
                                 <input type="password" name="Password" value="" class="form-control" required />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-4">Rol</label>
+                            <label class="col-md-4"><b>Selecciona el Rol</b></label>
                             <div class="col-md-10">
                                 <select class="form-control" name="RolName" required>
                                     <option>Elige un Rol</option>
@@ -35,11 +39,12 @@
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <button class="btn btn-sm btn-outline-primary m-1">Guardar</button>
-                            <a href="@Url.Action("Index","Users")" class="btn-sm btn btn-outline-danger m-1">Volver a Usuarios</a>
+                            <button class="btn btn-lg btn-outline-success m-4">Crear Usuario</button>
+                            <a href="@Url.Action("Index","Users")" class="btn-lg btn btn-outline-danger m-4">Volver a Usuarios</a>
                         </div>
                     </form>
                 </div>
+                <div class="card-footer bg-danger"></div>
             </div>
         </div>
 

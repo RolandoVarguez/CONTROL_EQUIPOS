@@ -185,6 +185,10 @@
     <Compile Include="Migrations\202005312100229_FirtsMigration.Designer.cs">
       <DependentUpon>202005312100229_FirtsMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006020319243_UpdatePlayers.cs" />
+    <Compile Include="Migrations\202006020319243_UpdatePlayers.Designer.cs">
+      <DependentUpon>202006020319243_UpdatePlayers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -204,6 +208,10 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\estadio.jpg" />
+    <Content Include="Content\img\jugadores.jpg" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\LogoLiga.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -372,7 +380,6 @@
     <Content Include="Views\Teams\Details.cshtml" />
     <Content Include="Views\Teams\Edit.cshtml" />
     <Content Include="Views\Teams\Index.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Teams\AllTeams.cshtml" />
     <Content Include="Views\Players\PlayersByTeam.cshtml" />
@@ -388,6 +395,7 @@
     <Content Include="Views\Teams\FullDetails.cshtml" />
     <Content Include="Views\Stadiums\FullStadiums.cshtml" />
     <Content Include="Views\Stadiums\FullDetails.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -406,6 +414,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202005312100229_FirtsMigration.resx">
       <DependentUpon>202005312100229_FirtsMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006020319243_UpdatePlayers.resx">
+      <DependentUpon>202006020319243_UpdatePlayers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

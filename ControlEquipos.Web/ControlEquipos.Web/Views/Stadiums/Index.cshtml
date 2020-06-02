@@ -4,56 +4,40 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="row">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Owner.Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StadiumName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InaugurationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Capacity)
-        </th>
+    @foreach (var item in Model)
+    {
+        <center>
+            <div class="col-xl-3 col-md-3 mb-4 m-3">
+                <div class="card border-bottom-dark shadow  border-left-dark shadow h-100 py-2 " style="width: 22rem">
+                    <div class="card-header bg-danger"></div>
+                    <div class="card-body">
 
-        <th>
-            @Html.DisplayNameFor(model => model.About)
-        </th>
-        <th></th>
-    </tr>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <center>
+                                    <img src="@Url.Action("getImage","Stadiums", new {Id = item.Id, @class="card-img-top" })" width="270" height="200" />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Owner.Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StadiumName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InaugurationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Capacity)
-        </td>
+                                </center>
+                                <br />
+                                <div class="text-xs text-lg-left mb-1"><b>Nombre:</b> @item.StadiumName</div>
+                                <div class="text-xs text-lg-left mb-1"><b>Direccion:</b> @item.About</div>
+                                <div class="text-xs text-lg-left mb-1"><b>Capacidad:</b> @item.Capacity</div>
+                            </div>
+                            <br />
+                        </div>
+                        <center class="m-2">
 
-        <td>
-            @Html.DisplayFor(modelItem => item.About)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+                            @Html.ActionLink("Consultar", "Details", new { id = item.Id }, new { @class = "btn btn-block btn-outline-dark" })
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-block btn-danger" })
+                        </center>
+                    </div>
+                    <div class="card-header bg-danger"></div>
 
-</table>
+                </div>
+            </div>
+        </center>
+
+    }
+</div>

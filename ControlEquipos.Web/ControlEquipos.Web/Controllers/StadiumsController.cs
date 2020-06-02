@@ -39,6 +39,7 @@ namespace ControlEquipos.Web.Controllers
         [Authorize]
         public ActionResult Details(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
