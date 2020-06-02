@@ -4,69 +4,24 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Team</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Owner.UserId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Owner.UserId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TeamName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TeamName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FoundationDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FoundationDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Championships)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Championships)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Imagen)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+    <center>
+        <div class="card w-75 bg-dark m-5">
+            <div class="card-body bg-gradient-dark">
+                <h1 class="card-title text-center text-danger"><b>AVISO DE ELIMINACION</b></h1><hr />
+                <h4 class="card-text text-justify text-white">
+                    Estas apunto de eliminar el Equipo "@Html.DisplayFor(model => model.TeamName)"
+                    ¿Estas realmente seguro de lo que vas a hacer?
+                </h4>
+                <br />
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-actions container">
+                        @Html.ActionLink("No, Volver a la Lista", "Index", null, new { @class = "btn btn-outline-warning btn-lg text-center float-left" })
+                        <input type="submit" value="Si, Quiero Eliminarlo" class="btn btn-lg btn-outline-danger float-right" />
+                    </div>
+                }
+                </div>
         </div>
-    }
-</div>
+
+    </center>

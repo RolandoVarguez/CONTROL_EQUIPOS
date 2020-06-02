@@ -4,13 +4,15 @@
     ViewBag.Title = "Index";
 }
 
+<h2 class="m-3 text-center"><b>Estadios Registrados</b></h2>
+@Html.ActionLink("Añadir un nuevo estadio", "Create",null, new { @class = "btn btn-block btn-dark" })
 <div class="row">
 
     @foreach (var item in Model)
     {
         <center>
             <div class="col-xl-3 col-md-3 mb-4 m-3">
-                <div class="card border-bottom-dark shadow  border-left-dark shadow h-100 py-2 " style="width: 22rem">
+                <div class="card border-bottom-dark shadow  border-left-dark shadow h-100 py-2" style="width: 20rem">
                     <div class="card-header bg-danger"></div>
                     <div class="card-body">
 

@@ -14,11 +14,16 @@
                 ¿Estas realmente seguro de lo que vas a hacer?
             </h4>
             <br />
-            <div class="form-actions container">
-                @Html.ActionLink("No, Volver a la Lista", "Index", null, new { @class = "btn btn-outline-warning btn-lg text-center float-left" })
-                <input type="submit" value="Si, Quiero Eliminarlo" class="btn btn-lg btn-outline-danger float-right" />
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions container">
+                    @Html.ActionLink("No, Volver a la Lista", "Index", null, new { @class = "btn btn-outline-warning btn-lg text-center float-left" })
+                    <input type="submit" value="Si, Quiero Eliminarlo" class="btn btn-lg btn-outline-danger float-right" />
+                </div>
+            }
             </div>
-        </div>
     </div>
 
 </center>

@@ -4,58 +4,45 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Owner.UserId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TeamName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FoundationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Championships)
-        </th>
-        
-        <th></th>
-    </tr>
+<h2 class="text-center m-3"><b>Equipos Registrados</b></h2>
+@Html.ActionLink("Añadir un nuevo equipo", "Create", null, new { @class = "btn btn-block btn-dark" })
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Owner.UserId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TeamName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FoundationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Championships)
-        </td>
-        <td>
-            
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+<div class="row">
 
-</table>
+    @foreach (var item in Model)
+    {
+        <center>
+            <div class="col-xl-3 col-md-3 mb-4 m-3">
+                <div class="card border-bottom-dark shadow  border-left-dark shadow h-100 py-2 " style="width: 20rem">
+                    <div class="card-header bg-dark"></div>
+                    <div class="card-body">
+
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <center>
+                                    <img src="@Url.Action("getImage","Teams", new {Id = item.Id, @class="card-img-top" })" width="200" height="200" />
+
+                                </center>
+                                <br />
+                                <div class="text-xs text-lg-left mb-1"><b>Nombre:</b> @item.TeamName</div>
+                                <div class="text-xs text-lg-left mb-1"><b>Ciudad:</b> @item.Location</div>
+                                <div class="text-xs text-lg-left mb-1"><b>Campeonatos:</b> @item.Championships</div>
+                            </div>
+                            <br />
+                        </div>
+                        <center class="m-2">
+
+                            @Html.ActionLink("Consultar", "AllDetails", new { id = item.Id }, new { @class = "btn btn-block btn-outline-dark" })
+                            @Html.ActionLink("Modificar", "Edit", new { id = item.Id }, new { @class = "btn btn-block btn-dark" })
+
+                        </center>
+                    </div>
+                    <div class="card-header bg-dark"></div>
+
+                </div>
+            </div>
+        </center>
+
+    }
+</div>

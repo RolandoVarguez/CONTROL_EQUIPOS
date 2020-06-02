@@ -41,7 +41,7 @@ namespace ControlEquipos.Web.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Team = (from t in db.Owners
+            ViewBag.Team = (from t in db.Teams
                              select t).ToList();
             return View(player);
         }
@@ -50,7 +50,7 @@ namespace ControlEquipos.Web.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            ViewBag.Team = (from t in db.Owners
+            ViewBag.Team = (from t in db.Teams
                             select t).ToList();
             ViewBag.TeamID = new SelectList(db.Teams, "Id", "TeamName");
             return View();

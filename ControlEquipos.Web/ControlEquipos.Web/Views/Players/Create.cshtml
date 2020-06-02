@@ -4,94 +4,126 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2 class="text-center m-4">Agregar un nuevo Jugador</h2>
 
-@using (Html.BeginForm("Create", "Players", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+@using (Html.BeginForm("Create", "Players", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
-<div>
+
+
     <div class="form-horizontal">
-        <h4>Player</h4>
-        <hr />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="row justify-content-center col-md-12">
-        <div class="form-group">
-            @Html.LabelFor(model => model.PlayerName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-8">
-                @Html.EditorFor(model => model.PlayerName, new { htmlAttributes = new { @class = "form-control col-md-8" } })
-                @Html.ValidationMessageFor(model => model.PlayerName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PlayerLastName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PlayerLastName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PlayerLastName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nationality, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Nationality, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nationality, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.BornDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BornDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BornDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TeamID, "TeamID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("TeamID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.TeamID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <b> Ingresar Imagen del Producto: (Formato JPG)</b>
-            <div class="col-md-12">
-                <p></p>
-                @*Html.EditorFor(model => model.Imagen, new { htmlAttributes = new { @class = "form-control" } })*@
-                <img src="@Url.Action("getImage", "Stadiums")" />
-                <br />
-                <input type="file" name="imageload" />
-                @Html.ValidationMessageFor(model => model.Imagen, "", new { @class = "text-danger" })
-            </div>
+        <div class="card container border-dark">
             <p></p>
-            <b>
-                <p class="text-center">
-                </p>
-            </b>
+            <div class="card-header bg-dark"></div>
+
+            <div class="card-body">
+                <div class="row justify-content-between">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-7"><b>Nombre del Jugador:</b></label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.PlayerName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PlayerName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-7"><b>Apellido del Jugador:</b></label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.PlayerLastName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PlayerLastName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group class=" col-md-7"">
+                            <label class="col-md-7"><b>Nacionalidad:</b></label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Nationality, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Nationality, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-7"><b>Posicion del Jugador:</b></label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-7"><b>Fecha de Nacimiento:</b></label>
+                            <div class="col-md-10">
+                                <input type="date" name="BornDate" value="" class="form-control" />
+                                @Html.ValidationMessageFor(model => model.BornDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-7"><b>Euipo Actual:</b></label>
+                            <div class="col-md-10">
+                                <select name="TeamID" class="form-control">
+                                    <option>Elige un equipo:</option>
+                                    @foreach (var item in ViewBag.Team)
+                                    {
+                                        <option value="@item.Id">@item.TeamName</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-md-7"><b>Acerca del Jugador:</b></label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.About, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.About, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="col-md-6">
+                        <label class="col-md-7"><b>Agrega la Imagen del Estadio:</b></label>
+                        @*Html.EditorFor(model => model.Imagen, new { htmlAttributes = new { @class = "form-control" } })*@
+                        <div class="col-md-10">
+                            <img src="@Url.Action("getImage", "Players")" />
+
+                            <input type="file" name="imageload" />
+                            @Html.ValidationMessageFor(model => model.Imagen, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                </div>
+                <center>
+                    <div class="col-md-6">
+                        <input type="submit" value="Agregar Jugador" class="btn btn-outline-success btn-md btn-block col-md-12" />
+                        @Html.ActionLink("Volver a la Lista", "Index", "Players", null, new { @class = "btn btn-warning btn-md btn-block" })
+                    </div>
+                </center>
+
+            </div>
+            <div class="card-footer bg-dark"></div>
+            <br />
+
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.About, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.About, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.About, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
     </div>
-</div>
+
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+
+
