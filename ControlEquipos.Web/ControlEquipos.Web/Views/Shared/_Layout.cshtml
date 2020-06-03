@@ -6,7 +6,9 @@
     <title>@ViewBag.Title - eLiga</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/jquery.dataTables.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
+
 
 
 </head>
@@ -41,7 +43,7 @@
                 @if (User.IsInRole("Admin"))
                 {
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="@Url.Action("Index", "Users")"><b>Usuarios</b></a>
+                        <a class="nav-link text-white" href="@Url.Action("Create", "Users")"><b>Usuarios</b></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="@Url.Action("Index","Stadiums")"><b>Estadios</b></a>
@@ -106,6 +108,9 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
+
+
+
 </html>
 
-
+<script src="~/Scripts/jquery.dataTables.js"></script>

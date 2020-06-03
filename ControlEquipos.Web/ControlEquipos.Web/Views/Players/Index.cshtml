@@ -4,64 +4,47 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Team.TeamName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PlayerName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PlayerLastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nationality)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BornDate)
-        </th>
-
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<br />
+<h2 class="text-center">Control de Jugadores</h2>
+<br />
+<table class="table container" id="jugadores">
+    <thead class="thead-dark border-dark">
         <tr>
-            <td>
-                <a href="@Url.Action("PlayersByTeam","Players",new { teamId=item.Team.Id})">@item.Team.TeamName</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlayerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlayerLastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nationality)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BornDate)
-            </td>
-
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
-            </td>
+            <th scope="col">id</th>
+            <th scope="col">Nombre:</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Equipo Actual</th>
+            <th scope="col">Nacionalidad</th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody class="border-dark">
+        @foreach (var item in Model)
+        {
+        <tr>
+            <th scope="row">@item.Id</th>
+            <td>@Html.DisplayFor(modelItem => item.PlayerName)</td>
+            <td>@Html.DisplayFor(modelItem => item.PlayerLastName)</td>
+            <td><a href="@Url.Action("PlayersByTeam","Players",new { teamId=item.Team.Id})">@item.Team.TeamName</a></td>
+            <td>@Html.DisplayFor(modelItem => item.Nationality)</td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id }, new {@class="btn btn-info" })
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id },new {@class="btn btn-danger" })
+            </td>
+            
 
+
+        </tr>
+        }
+
+        
+       
+    </tbody>
 </table>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-
-    <script>
-        $(document).ready(function () {
-            $('#myProducts').DataTable();
-        });
-    </script>
-}
+<script>
+    $(document).ready(function () {
+        $('#jugadores').DataTable();
+    });
+</script>

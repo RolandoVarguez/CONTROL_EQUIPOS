@@ -194,6 +194,10 @@
     <Compile Include="Migrations\202006022326293_UpdateModels.Designer.cs">
       <DependentUpon>202006022326293_UpdateModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006032037506_UpdateUserViewModel.cs" />
+    <Compile Include="Migrations\202006032037506_UpdateUserViewModel.Designer.cs">
+      <DependentUpon>202006032037506_UpdateUserViewModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -217,6 +221,7 @@
     <Content Include="Content\img\jugadores.jpg" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\LogoLiga.png" />
+    <Content Include="Content\jquery.dataTables.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -249,6 +254,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -394,14 +400,8 @@
     <Content Include="Views\Teams\FullDetails.cshtml" />
     <Content Include="Views\Stadiums\FullStadiums.cshtml" />
     <Content Include="Views\Stadiums\FullDetails.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Owners\Create.cshtml" />
-    <Content Include="Views\Owners\Delete.cshtml" />
-    <Content Include="Views\Owners\Details.cshtml" />
-    <Content Include="Views\Owners\Edit.cshtml" />
-    <Content Include="Views\Owners\Index.cshtml" />
     <Content Include="Views\Players\Index.cshtml" />
-    <Content Include="Views\Teams\AllDetails.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -426,6 +426,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006022326293_UpdateModels.resx">
       <DependentUpon>202006022326293_UpdateModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006032037506_UpdateUserViewModel.resx">
+      <DependentUpon>202006032037506_UpdateUserViewModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

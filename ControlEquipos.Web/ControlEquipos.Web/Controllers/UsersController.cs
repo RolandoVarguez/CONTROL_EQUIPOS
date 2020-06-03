@@ -39,7 +39,7 @@ namespace ControlEquipos.Web.Controllers
             {
                 if (uvm != null)
                 {
-                    Utilities.CreateUserASP(uvm.Email, uvm.Password, uvm.RolName);
+                    Utilities.CreateUserASP(uvm.Name, uvm.Username, uvm.Email, uvm.Password, uvm.RolName);
                     var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
                     var user = userManager.FindByName(uvm.Email);
                     var owner = new Owner();

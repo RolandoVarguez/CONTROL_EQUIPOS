@@ -29,7 +29,7 @@ namespace ControlEquipos.Web.Clase
 
             if (userAsp == null)
             {
-                CreateUserASP("administrador@admin.com", "Admin123", "Admin");
+                CreateUserASP("Rolando Varguez","rolando30","administrador@admin.com", "Admin123", "Admin");
             }
         }
 
@@ -39,7 +39,7 @@ namespace ControlEquipos.Web.Clase
             var userclient = clientdb.FindByName("team_owner@owner.com");
             if (userclient == null)
             {
-                CreateUserASP("team_owner@owner.com", "TeamOwner123", "Owner");
+                CreateUserASP("Gerardo Leon","gerryligas","team_owner@owner.com", "TeamOwner123", "Owner");
                 userclient = clientdb.FindByName("team_owner@owner.com");
                 var owner = new Owner
                 {
@@ -51,7 +51,7 @@ namespace ControlEquipos.Web.Clase
             }
         }
 
-        public static void CreateUserASP(string email, string password, string rol)
+        public static void CreateUserASP(string name, string username, string email, string password, string rol)
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
             var userASP = new ApplicationUser()
