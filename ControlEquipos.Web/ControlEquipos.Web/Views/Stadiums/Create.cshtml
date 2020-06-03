@@ -52,8 +52,13 @@
                 <div class="form-group">
                     <label class="col-md-7"><b>Dueño del Equipo:</b></label>
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Owner.Id, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Owner.Id, "", new { @class = "text-danger" })
+                        <select name="TeamID" class="form-control">
+                            <option>Elige la id del dueño:</option>
+                            @foreach (var item in ViewBag.Owner)
+                            {
+                                <option value="@item.Id">@item.Id</option>
+                            }
+                        </select>   
                     </div>
                 </div>
             </div>

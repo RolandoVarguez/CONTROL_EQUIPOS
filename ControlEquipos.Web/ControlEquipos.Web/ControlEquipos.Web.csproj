@@ -173,6 +173,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OwnersController.cs" />
     <Compile Include="Controllers\PlayersController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
     <Compile Include="Controllers\StadiumsController.cs" />
@@ -188,6 +189,10 @@
     <Compile Include="Migrations\202006020319243_UpdatePlayers.cs" />
     <Compile Include="Migrations\202006020319243_UpdatePlayers.Designer.cs">
       <DependentUpon>202006020319243_UpdatePlayers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006022326293_UpdateModels.cs" />
+    <Compile Include="Migrations\202006022326293_UpdateModels.Designer.cs">
+      <DependentUpon>202006022326293_UpdateModels.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -369,7 +374,6 @@
     <Content Include="Views\Players\Delete.cshtml" />
     <Content Include="Views\Players\Details.cshtml" />
     <Content Include="Views\Players\Edit.cshtml" />
-    <Content Include="Views\Players\Index.cshtml" />
     <Content Include="Views\Stadiums\Create.cshtml" />
     <Content Include="Views\Stadiums\Delete.cshtml" />
     <Content Include="Views\Stadiums\Details.cshtml" />
@@ -383,11 +387,6 @@
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Teams\AllTeams.cshtml" />
     <Content Include="Views\Players\PlayersByTeam.cshtml" />
-    <Content Include="Views\Owners\Create.cshtml" />
-    <Content Include="Views\Owners\Delete.cshtml" />
-    <Content Include="Views\Owners\Details.cshtml" />
-    <Content Include="Views\Owners\Edit.cshtml" />
-    <Content Include="Views\Owners\Index.cshtml" />
     <Content Include="Views\Players\FullPlayers.cshtml" />
     <Content Include="Views\Players\FullPlayersByTeam.cshtml" />
     <Content Include="Views\Players\FullDetails.cshtml" />
@@ -396,6 +395,13 @@
     <Content Include="Views\Stadiums\FullStadiums.cshtml" />
     <Content Include="Views\Stadiums\FullDetails.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Owners\Create.cshtml" />
+    <Content Include="Views\Owners\Delete.cshtml" />
+    <Content Include="Views\Owners\Details.cshtml" />
+    <Content Include="Views\Owners\Edit.cshtml" />
+    <Content Include="Views\Owners\Index.cshtml" />
+    <Content Include="Views\Players\Index.cshtml" />
+    <Content Include="Views\Teams\AllDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -417,6 +423,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006020319243_UpdatePlayers.resx">
       <DependentUpon>202006020319243_UpdatePlayers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006022326293_UpdateModels.resx">
+      <DependentUpon>202006022326293_UpdateModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

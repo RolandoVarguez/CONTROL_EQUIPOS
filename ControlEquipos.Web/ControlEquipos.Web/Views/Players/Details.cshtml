@@ -3,77 +3,110 @@
 @{
     ViewBag.Title = "Details";
 }
+    <div class=" m-4">
+        <div class="row justify-content-between">
 
-<h2>Details</h2>
+            <div class="p-5">
+                <dd>
+                    <center>
+                        <img src="@Url.Action("getImage","Players", new { Id = Model.Id,  })" width="400" height="380" class="img-thumbnail border-dark bg-success" />
+                        <br />
+                    </center>
+                </dd>
 
-<div>
-    <h4>Player</h4>
-    <hr />
-    <div class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Team.TeamName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Team.TeamName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PlayerName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PlayerName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PlayerLastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PlayerLastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nationality)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nationality)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BornDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BornDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </dt>
-
-        <dd>
-            <p>
-                <img src="@Url.Action("getImage","Teams", new { Id = Model.Id })" width="380" height="380" />
+            </div> 
+            
+            
+            <div class="card container" style="width:45rem">
                 <br />
-            </p>
-        </dd>
+                <div class="card-header bg-success"></div>
+                <label class="text-center m-2"><b><h4>Detalles del Jugador</h4></b></label>
+                <div class="card-body col-md-12">
+                    <div>
+
+                        <h5>
+                            <div class="col-md-6">
+                                <dt>
+                                    <b>Equipo Actual:</b>
+                                </dt>
 
 
-        <dt>
-            @Html.DisplayNameFor(model => model.About)
-        </dt>
+                                <dd>
+                                    <label>@Html.DisplayFor(model => model.Team.TeamName)</label>
+                                </dd>
+                            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.About)
-        </dd>
+                            <div class="col-md-6">
+                                <dt>
+                                    <b>Nombre:</b>
 
-        </dl>
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.PlayerName)
+                                </dd>
+                            </div>
+
+
+
+                            <div class="col-md-6">
+                                <dt>
+                                    <b>Apellido:</b>
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.PlayerLastName)
+                                </dd>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <dt>
+
+                                    <b>Nacionalidad:</b>
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Nationality)
+                                </dd>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <dt>
+                                    <b>Fecha de Nacimiento:</b>
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.BornDate)
+                                </dd>
+                            </div>
+
+
+
+
+                        </h5>
+
+                        <dt>
+                            <center>
+                                <h5><b class="text-center"><b>Biografia:</b></h5>
+                            </center>
+                        </dt>
+
+                        <dd>
+                            <h5><label class="text-justify">@Html.DisplayFor(model => model.About)</label></h5>
+                        </dd>
+
+                    </div>
+                    <br />
+                    <div>
+                        @Html.ActionLink("Volver a la Lista", "Index", null, new { @class = "btn btn-lg btn-block btn-outline-warning" })
+                    </div>
+                </div>
+                <div class="card-footer bg-success"></div>
+                <br />
+
+            </div>
+            
+        </div>
     </div>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

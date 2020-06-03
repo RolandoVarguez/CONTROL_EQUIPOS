@@ -13,8 +13,7 @@ namespace ControlEquipos.Web.Models
     {
         public string FirtsName { get; set; }
         public string LastName { get; set; }
-        public string Phone { get; set; }
-        public byte[] Imagen { get; set; }
+       
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -37,7 +36,7 @@ namespace ControlEquipos.Web.Models
         }
 
 
-       public DbSet<Owner> Owners { get; set; }
+        public DbSet<Owner> Owners { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Stadium> Stadiums { get; set; }
         public DbSet<Team>Teams { get; set; }

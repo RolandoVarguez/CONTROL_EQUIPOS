@@ -19,7 +19,6 @@ namespace ControlEquipos.Web.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-
         //GET: Players
         [Authorize]
         public ActionResult Index()
@@ -102,6 +101,8 @@ namespace ControlEquipos.Web.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Team = (from t in db.Teams
+                            select t).ToList();
             ViewBag.TeamID = new SelectList(db.Teams, "Id", "TeamName", player.TeamID);
             return View(player);
         }

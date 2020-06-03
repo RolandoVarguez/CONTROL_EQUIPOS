@@ -46,10 +46,11 @@
                             <label class="col-md-7"><b>Dueño del Equipo:</b></label>
                             <div class="col-md-10">
                                 <select name="OwnerID" class="form-control">
-                                    <option>Elige al Dueño:</option>
+                                    <option>Elige tu id Dueño:</option>
                                     @foreach (var item in ViewBag.Owner)
                                     {
                                         <option value="@item.Id">@item.Id</option>
+                                       
                                     }
                                 </select>
                             </div>

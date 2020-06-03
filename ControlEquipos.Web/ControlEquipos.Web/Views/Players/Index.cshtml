@@ -4,39 +4,64 @@
     ViewBag.Title = "Index";
 }
 
-<h2 class="text-center m-3">Futbolistas Registrados</h2>
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <center>
-                <div class="col-xl-3 col-md-3 mb-4 m-3">
-                <div class="card border-bottom-dark shadow  border-left-dark shadow h-100 py-2 "style="width: 20rem">
-                    <div class="card-header bg-dark"></div>
-                    <div class="card-body" >
+<h2>Index</h2>
 
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <center>
-                                    <img src="@Url.Action("getImage","Players", new {Id = item.Id })" width="200" height="200" />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Team.TeamName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlayerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlayerLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nationality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BornDate)
+        </th>
 
-                                </center>
-                                <br />
-                                    <div class="text-xs text-lg-left mb-1"><b>Nombre:</b> @item.PlayerName @item.PlayerLastName</div>
-                                    <div class="text-xs text-lg-left mb-1"><a href="@Url.Action("PlayersByTeam","Players", new {teamId=item.Team.Id })"><b>Equipo:</b> @item.Team.TeamName</a></div>
-                            </div>
-                            <br />
-                        </div>
-                        <center class="m-2">
-                            @Html.ActionLink("Consultar", "Details", new { id = item.Id }, new { @class = "btn btn-block btn-outline-dark" })
-                        </center>
-                    </div>
-                    <div class="card-header bg-dark"></div>
+        <th></th>
+    </tr>
 
-                </div>
-         </div>
-            </center>
-            
-        }
-     </div>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="@Url.Action("PlayersByTeam","Players",new { teamId=item.Team.Id})">@item.Team.TeamName</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nationality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BornDate)
+            </td>
 
-  
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            $('#myProducts').DataTable();
+        });
+    </script>
+}

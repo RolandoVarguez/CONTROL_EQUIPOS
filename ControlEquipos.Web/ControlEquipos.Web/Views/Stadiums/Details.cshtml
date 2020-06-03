@@ -4,69 +4,98 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class=" m-4">
+    <div class="row justify-content-between">
 
-<div>
-    <h4>Stadium</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Owner.UserId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Owner.UserId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StadiumName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StadiumName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.InaugurationDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.InaugurationDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Capacity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Capacity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </dt>
-
-        <dd>
-            <div class="form-horizontal">
-                <p>
-                    <img src="@Url.Action("getImage","Stadiums", new { Id = Model.Id })" width="380" height="380" />
+        <div class="p-5">
+            <dd>
+                <center>
+                    <img src="@Url.Action("getImage","Stadiums", new { Id = Model.Id,  })" width="450" height="380" class="img-thumbnail border-dark bg-success" />
                     <br />
-                </p>
+                </center>
+            </dd>
 
+        </div>
+        <br />
+
+        <div class="card container" style="width:45rem">
+            <br />
+            <div class="card-header bg-success"></div>
+            <label class="text-center m-2"><b><h4>Detalles del Estadio</h4></b></label>
+            <div class="card-body col-md-12">
+                <div>
+                    <h5>
+                        <div class="col-md-6">
+                            <dt>
+                                <b>Nombre del Estadio:</b>
+                            </dt>
+
+                            <p></p>
+                            <dd>
+                                <label>@Html.DisplayFor(model => model.StadiumName)</label>
+                            </dd>
+                        </div>
+
+                        <div class="col-md-6">
+                            <dt>
+                                <b>Fecha de Inauguracion:</b>
+
+                            </dt>
+                            <p></p>
+                            <dd>
+                                @Html.DisplayFor(model => model.InaugurationDate)
+                            </dd>
+                        </div>
+
+
+
+                        <div class="col-md-6">
+                            <dt>
+                                <b>Capacidad de Espectadores:</b>
+                            </dt>
+                            <p></p>
+                            <dd>
+                                @Html.DisplayFor(model => model.Capacity)
+                            </dd>
+
+                        </div>
+                   
+                        <div class="col-md-6">
+                            <dt>
+
+                                <b>Nombre del Dueño:</b>
+                            </dt>
+                            <p></p>
+                            <dd>
+                                @Html.DisplayFor(model => model.OwnerID)
+                            </dd>
+
+                        </div>
+                
+                        <div class="col-md-6">
+                            <dt>
+                                <b>Direccion del Estadio:</b>
+                            </dt>
+                            <p></p>
+                            <dd>
+                                @Html.DisplayFor(model => model.About)
+                            </dd>
+                        </div>
+
+                    </h5>
+
+                    
+
+                </div>
+                <br />
+                <div>
+                    @Html.ActionLink("Volver a la Lista", "Index", null, new { @class = "btn btn-lg btn-block btn-outline-warning" })
+                </div>
             </div>
-        </dd>
+            <div class="card-footer bg-success"></div>
+            <br />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.About)
-        </dt>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.About)
-        </dd>
-
-    </dl>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

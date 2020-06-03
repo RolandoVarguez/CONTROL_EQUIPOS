@@ -19,7 +19,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <center>
-                                    <img src="@Url.Action("getImage","Stadiums", new {Id = item.Id, @class="card-img-top" })" width="270" height="200" />
+                                    <a href="@Url.Action("Edit","Stadiums", new { id= item.Id})"><img src="@Url.Action("getImage","Stadiums", new {Id = item.Id, @class="card-img-top" })" width="270" height="200" /></a>
 
                                 </center>
                                 <br />

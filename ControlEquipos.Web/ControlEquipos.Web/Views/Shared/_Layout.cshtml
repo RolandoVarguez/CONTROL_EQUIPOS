@@ -8,9 +8,10 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
 
+
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-danger bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-danger bg-success">
         <a class="navbar-brand text-white" href="#"><b>eLiga</b></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -31,19 +32,16 @@
                         <b>Ver Mas</b>
                     </a>
                     <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item text-white bg-danger" href="@Url.Action("FullStadiums","Stadiums")"><b>Estadios</b></a>
-                        <a class="dropdown-item text-white" href="@Url.Action("FullTeams","Teams")"><b>Equipos</b></a>
-                        <a class="dropdown-item text-white bg-danger" href="@Url.Action("FullPlayers","Players")"><b>Jugadores</b></a>
+                        <a class="dropdown-item text-dark bg-light" href="@Url.Action("FullStadiums","Stadiums")"><b>Estadios</b></a>
+                        <a class="dropdown-item text-white bg-success" href="@Url.Action("FullTeams","Teams")"><b>Equipos</b></a>
+                        <a class="dropdown-item text-dark bg-light" href="@Url.Action("FullPlayers","Players")"><b>Jugadores</b></a>
                     </div>
                 </li>
 
-                    @if (User.IsInRole("Admin"))
-                    {
+                @if (User.IsInRole("Admin"))
+                {
                     <li class="nav-item">
                         <a class="nav-link text-white" href="@Url.Action("Index", "Users")"><b>Usuarios</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="@Url.Action("Index","Players")"><b>Jugadores</b></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="@Url.Action("Index","Stadiums")"><b>Estadios</b></a>
@@ -51,22 +49,39 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" href="@Url.Action("AllTeams","Teams")"><b>Equipos</b></a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="@Url.Action("Index","Players")"><b>Jugadores</b></a>
+                    </li>
 
 
                 }
 
-                    @if (User.IsInRole("Owner"))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="@Url.Action("Create","Players")"><b>Mis Jugadores</b></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="@Url.Action("Index","Teams")"><b>Mi Equipo</b></a>
-                        </li>
+                @if (User.IsInRole("Owner"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <b>Mis Jugadores</b>
+                        </a>
+                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item text-dark bg-light" href="@Url.Action("Index","Players")"><b>Jugadores</b></a>
 
-                    }
+                            <a class="dropdown-item text-dark bg-light" href="@Url.Action("Create","Players")"><b>Agregar Jugador</b></a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <b>Mis Equipos</b>
+                        </a>
+                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item text-dark bg-light" href="@Url.Action("Index","Teams")"><b>Equipos</b></a>
 
-                </ul>
+                            <a class="dropdown-item text-dark bg-light" href="@Url.Action("Create","Teams")"><b>Agregar Equipo</b></a>
+                        </div>
+                    </li>
+
+                }
+
+            </ul>
 
 
             <span class="navbar-text">
@@ -75,11 +90,15 @@
 
         </div>
     </nav>
-    <div class="">
+    <div>
         @RenderBody()
-        <hr />
-        <footer>
-            <p class="text-center">&copy; @DateTime.Now.Year - eLiga Web</p>
+        <br />
+        <footer class="bg-dark">
+
+            <br />
+            <p class="text-center text-white m-3">&copy; @DateTime.Now.Year - eLiga Web</p>
+            <br />
+
         </footer>
     </div>
 
@@ -88,3 +107,5 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+

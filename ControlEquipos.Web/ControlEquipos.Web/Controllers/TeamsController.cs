@@ -100,6 +100,8 @@ namespace ControlEquipos.Web.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Owner = (from o in db.Owners
+                             select o).ToList();
             ViewBag.OwnerID = new SelectList(db.Owners, "Id", "UserId", team.OwnerID);
             return View(team);
         }

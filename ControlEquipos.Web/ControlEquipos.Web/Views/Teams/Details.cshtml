@@ -4,69 +4,86 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Team</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Owner.UserId)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Owner.Id)
-        </dd>
+<div class=" m-4">
+    <div class="row justify-content-between">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TeamName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TeamName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FoundationDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FoundationDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Championships)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Championships)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </dt>
-
-        <dd>
-            <div class="form-horizontal">
-                <p>
-                    <img src="@Url.Action("getImage","Teams", new { Id = Model.Id })" width="380" height="380" />
+        <div class="p-5">
+            <dd>
+                <center>
+                    <img src="@Url.Action("getImage", "Teams", new { Id = Model.Id, })" width="380" height="380" class="img-thumbnail border-dark bg-success" />
                     <br />
-                </p>
+                </center>
+            </dd>
 
+        </div>
+
+
+        <div class="card container" style="width:45rem">
+            <br />
+            <div class="card-header bg-success"></div>
+            <label class="text-center m-2"><b><h4>Detalles de Equipo</h4></b></label>
+            <div class="card-body col-md-12">
+                <div>
+
+                    <h5>
+                        <div class="col-md-6">
+                            <dt>
+                                <b>Equipo Actual:</b>
+                            </dt>
+                            <p></p>
+
+                            <dd>
+                                <label>@Html.DisplayFor(model => model.TeamName)</label>
+                            </dd>
+                        </div>
+
+                        <div class="col-md-6">
+                            <dt>
+                                <b>Fecha de Creacion:</b>
+                            </dt>
+                            <p></p>
+                            <dd>
+                                @Html.DisplayFor(model => model.FoundationDate)
+                            </dd>
+                        </div>
+                        <p></p>
+                        <div class="col-md-6">
+                            <dt>
+
+                                <b>Ubicacion del Equipo:</b>
+                            </dt>
+                            <p></p>
+                            <dd>
+                                @Html.DisplayFor(model => model.Location)
+                            </dd>
+
+                        </div>
+
+                        <p></p>
+                        <div class="col-md-6">
+                            <dt>
+                                <b>Campeonatos:</b>
+                            </dt>
+                            <p></p>
+                            <dd>
+                                @Html.DisplayFor(model => model.Championships)
+                            </dd>
+                        </div>
+
+                    </h5>
+                    <br />
+                    <div>
+                        @Html.ActionLink("Volver a la Lista", "Index", "Teams", null, new {@class="btn btn-lg btn-block btn-outline-warning"})
+                    </div>
+
+                </div>
             </div>
-        </dd>
+            <div class="card-footer bg-success"></div>
+            <br />
 
-    </dl>
+        </div>
+
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
