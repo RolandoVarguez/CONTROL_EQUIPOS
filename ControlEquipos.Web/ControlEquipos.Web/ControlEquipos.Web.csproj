@@ -173,10 +173,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\OwnersController.cs" />
     <Compile Include="Controllers\PlayersController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
-    <Compile Include="Controllers\StadiumsController.cs" />
+    <Compile Include="Controllers\StadiaController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -204,7 +203,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Owner.cs" />
     <Compile Include="Models\Player.cs" />
-    <Compile Include="Models\Stadium.cs" />
+    <Compile Include="Models\Stadia.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -380,11 +379,6 @@
     <Content Include="Views\Players\Delete.cshtml" />
     <Content Include="Views\Players\Details.cshtml" />
     <Content Include="Views\Players\Edit.cshtml" />
-    <Content Include="Views\Stadiums\Create.cshtml" />
-    <Content Include="Views\Stadiums\Delete.cshtml" />
-    <Content Include="Views\Stadiums\Details.cshtml" />
-    <Content Include="Views\Stadiums\Edit.cshtml" />
-    <Content Include="Views\Stadiums\Index.cshtml" />
     <Content Include="Views\Teams\Create.cshtml" />
     <Content Include="Views\Teams\Delete.cshtml" />
     <Content Include="Views\Teams\Details.cshtml" />
@@ -397,11 +391,14 @@
     <Content Include="Views\Players\FullPlayersByTeam.cshtml" />
     <Content Include="Views\Players\FullDetails.cshtml" />
     <Content Include="Views\Teams\FullTeams.cshtml" />
-    <Content Include="Views\Teams\FullDetails.cshtml" />
-    <Content Include="Views\Stadiums\FullStadiums.cshtml" />
-    <Content Include="Views\Stadiums\FullDetails.cshtml" />
     <Content Include="Views\Players\Index.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Stadia\Delete.cshtml" />
+    <Content Include="Views\Stadia\Details.cshtml" />
+    <Content Include="Views\Stadia\Edit.cshtml" />
+    <Content Include="Views\Stadia\Index.cshtml" />
+    <Content Include="Views\Stadia\Create.cshtml" />
+    <Content Include="Views\Teams\FullDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -192,11 +192,8 @@ namespace ControlEquipos.Web.Controllers
 
         public ActionResult FullTeams()
         {
-            var user = User.Identity.GetUserId();
-            var ow = db.Owners.Where(o => o.UserId == user).FirstOrDefault();
-            var equipos = db.Teams.Include(u => u.Owner).Where(p => p.OwnerID == ow.Id).ToList();
-
-            return View(equipos);
+            var teams = db.Teams.Include(t => t.Owner);
+            return View(teams.ToList());
         }
 
         // GET: Teams/Details/5

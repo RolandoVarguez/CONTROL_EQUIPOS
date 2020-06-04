@@ -26,9 +26,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Championships)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </th>
+
         <th></th>
     </tr>
 
@@ -49,12 +47,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Championships)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Imagen)
-        </td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Details", "FullDetails", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>

@@ -11,14 +11,13 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using ControlEquipos.Web.Models;
-using Microsoft.AspNet.Identity;
 
 namespace ControlEquipos.Web.Controllers
 {
-    public class StadiumsController : Controller
+    public class StadiaController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+  
 
         public ActionResult AllStadiums()
         {
@@ -26,153 +25,148 @@ namespace ControlEquipos.Web.Controllers
             return View(estadio);
         }
 
-        // GET: Stadiums
-        [Authorize]
+        // GET: Stadia
         public ActionResult Index()
         {
-           
             var stadiums = db.Stadiums.Include(s => s.Owner);
             return View(stadiums.ToList());
         }
 
-        // GET: Stadiums/Details/5
-        [Authorize]
+        // GET: Stadia/Details/5
         public ActionResult Details(int? id)
         {
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stadium stadium = db.Stadiums.Find(id);
-            if (stadium == null)
+            Stadia stadia = db.Stadiums.Find(id);
+            if (stadia == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Owner = (from o in db.Owners
-                             select o).ToList();
-            return View(stadium);
+            return View(stadia);
         }
 
-        // GET: Stadiums/Create
-        [Authorize]
+        // GET: Stadia/Create
         public ActionResult Create()
         {
-            ViewBag.Owner = (from o in db.Owners
-                             select o).ToList();
+            
             ViewBag.OwnerID = new SelectList(db.Owners, "Id", "UserId");
             return View();
         }
 
-        // POST: Stadiums/Create
+        // POST: Stadia/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,StadiumName,InaugurationDate,Capacity,OwnerID,Imagen,About")] Stadium stadium)
+        public ActionResult Create([Bind(Include = "Id,StadiumName,InaugurationDate,Capacity,OwnerID,Imagen,About")] Stadia stadia)
         {
             byte[] imagenActual = null;
             HttpPostedFileBase FileBase = Request.Files[0];
 
             if (FileBase == null)
             {
-                imagenActual = db.Teams.SingleOrDefault(t => t.Id == stadium.Id).Imagen;
+                imagenActual = db.Teams.SingleOrDefault(t => t.Id == stadia.Id).Imagen;
             }
 
             else
             {
                 WebImage image = new WebImage(FileBase.InputStream);
 
-                stadium.Imagen = image.GetBytes();
+                stadia.Imagen = image.GetBytes();
             }
-
 
             if (ModelState.IsValid)
             {
-                db.Stadiums.Add(stadium);
+                db.Stadiums.Add(stadia);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OwnerID = new SelectList(db.Owners, "Id", "UserId", stadium.OwnerID);
-            return View(stadium);
+            ViewBag.OwnerID = new SelectList(db.Owners, "Id", "UserId", stadia.OwnerID);
+            return View(stadia);
         }
 
-        // GET: Stadiums/Edit/5
-        [Authorize]
+        // GET: Stadia/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.Owner = (from o in db.Owners
+                             select o).ToList();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stadium stadium = db.Stadiums.Find(id);
-            if (stadium == null)
+            Stadia stadia = db.Stadiums.Find(id);
+            if (stadia == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Owner = (from o in db.Owners
-                             select o).ToList();
-            ViewBag.OwnerID = new SelectList(db.Owners, "Id", "UserId", stadium.OwnerID);
-            return View(stadium);
+            ViewBag.OwnerID = new SelectList(db.Owners, "Id", "UserId", stadia.OwnerID);
+            return View(stadia);
         }
 
-        // POST: Stadiums/Edit/5
+        // POST: Stadia/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,StadiumName,InaugurationDate,Capacity,OwnerID,Imagen,About")] Stadium stadium)
+        public ActionResult Edit([Bind(Include = "Id,StadiumName,InaugurationDate,Capacity,OwnerID,Imagen,About")] Stadia stadia)
         {
             byte[] imagenActual = null;
             HttpPostedFileBase FileBase = Request.Files[0];
 
             if (FileBase == null)
             {
-                imagenActual = db.Teams.SingleOrDefault(t => t.Id == stadium.Id).Imagen;
+                imagenActual = db.Teams.SingleOrDefault(t => t.Id == stadia.Id).Imagen;
             }
 
             else
             {
                 WebImage image = new WebImage(FileBase.InputStream);
 
-                stadium.Imagen = image.GetBytes();
+                stadia.Imagen = image.GetBytes();
             }
-
 
             if (ModelState.IsValid)
             {
-                db.Entry(stadium).State = EntityState.Modified;
+                db.Stadiums.Add(stadia);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.OwnerID = new SelectList(db.Owners, "Id", "UserId", stadium.OwnerID);
-            return View(stadium);
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(stadia).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.OwnerID = new SelectList(db.Owners, "Id", "UserId", stadia.OwnerID);
+            return View(stadia);
         }
 
-        // GET: Stadiums/Delete/5
-        [Authorize]
+        // GET: Stadia/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stadium stadium = db.Stadiums.Find(id);
-            if (stadium == null)
+            Stadia stadia = db.Stadiums.Find(id);
+            if (stadia == null)
             {
                 return HttpNotFound();
             }
-            return View(stadium);
+            return View(stadia);
         }
 
-        // POST: Stadiums/Delete/5
+        // POST: Stadia/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Stadium stadium = db.Stadiums.Find(id);
-            db.Stadiums.Remove(stadium);
+            Stadia stadia = db.Stadiums.Find(id);
+            db.Stadiums.Remove(stadia);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -188,7 +182,7 @@ namespace ControlEquipos.Web.Controllers
 
         public ActionResult getImage(int id)
         {
-            Stadium estadios = db.Stadiums.Find(id);
+            Stadia estadios = db.Stadiums.Find(id);
             byte[] byteImage = estadios.Imagen;
 
             MemoryStream memoryStream = new MemoryStream(byteImage);
@@ -218,7 +212,7 @@ namespace ControlEquipos.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Stadium stadium = db.Stadiums.Find(id);
+            Stadia stadium = db.Stadiums.Find(id);
             if (stadium == null)
             {
                 return HttpNotFound();

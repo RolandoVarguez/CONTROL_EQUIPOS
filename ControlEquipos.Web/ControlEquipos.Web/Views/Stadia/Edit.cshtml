@@ -1,12 +1,14 @@
-﻿@model ControlEquipos.Web.Models.Stadium
+﻿@model ControlEquipos.Web.Models.Stadia
 
 @{
     ViewBag.Title = "Edit";
 }
 
+<h2>Edit</h2>
+
 <h2 class="text-center m-4">Editar datos del Estadio</h2>
 
-@using (Html.BeginForm("Edit", "Stadiums", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "Stadia", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -75,7 +77,7 @@
                         <label class="col-md-7"><b>Agrega la Imagen del Estadio:</b></label>
                         @*Html.EditorFor(model => model.Imagen, new { htmlAttributes = new { @class = "form-control" } })*@
                         <div class="col-md-10">
-                            <img src="@Url.Action("getImage", "Stadiums")" />
+                            <img src="@Url.Action("getImage", "Stadia")" />
 
                             <input type="file" name="imageload" />
                             @Html.ValidationMessageFor(model => model.Imagen, "", new { @class = "text-danger" })
@@ -86,7 +88,7 @@
                 <center>
                     <div class="col-md-6">
                         <input type="submit" value="Guardar Modificaciones" class="btn btn-outline-success btn-md btn-block col-md-12" />
-                        @Html.ActionLink("Volver a la Lista", "Index", "Stadiums", null, new { @class = "btn btn-warning btn-md btn-block" })
+                        @Html.ActionLink("Volver a la Lista", "Index", "Stadia", null, new { @class = "btn btn-warning btn-md btn-block" })
                     </div>
                 </center>
 

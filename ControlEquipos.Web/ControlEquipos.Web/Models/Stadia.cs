@@ -6,7 +6,7 @@ using System.Web;
 
 namespace ControlEquipos.Web.Models
 {
-    public class Stadium
+    public class Stadia
     {
         public int Id { get; set; }
         public string StadiumName { get; set; }
@@ -15,9 +15,8 @@ namespace ControlEquipos.Web.Models
 
         public int OwnerID { get; set; }
         [ForeignKey("OwnerID")]
-        public  Owner Owner { get; set; }
+        public Owner Owner { get; set; }
         public byte[] Imagen { get; set; }
         public string About { get; set; }
-
     }
 }

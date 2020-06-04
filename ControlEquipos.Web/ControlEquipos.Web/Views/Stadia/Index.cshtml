@@ -1,11 +1,11 @@
-﻿@model IEnumerable<ControlEquipos.Web.Models.Stadium>
+﻿@model IEnumerable<ControlEquipos.Web.Models.Stadia>
 
 @{
     ViewBag.Title = "Index";
 }
 
 <h2 class="m-3 text-center"><b>Estadios Registrados</b></h2>
-@Html.ActionLink("Añadir un nuevo estadio", "Create",null, new { @class = "btn btn-block btn-dark" })
+@Html.ActionLink("Añadir un nuevo estadio", "Create", null, new { @class = "btn btn-block btn-dark" })
 <div class="row">
 
     @foreach (var item in Model)
@@ -19,7 +19,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <center>
-                                    <a href="@Url.Action("Edit","Stadiums", new { id= item.Id})"><img src="@Url.Action("getImage","Stadiums", new {Id = item.Id, @class="card-img-top" })" width="270" height="200" /></a>
+                                    <a href="@Url.Action("Edit","Stadia", new { id= item.Id})"><img src="@Url.Action("getImage","Stadia", new {Id = item.Id, @class="card-img-top" })" width="270" height="200" /></a>
 
                                 </center>
                                 <br />

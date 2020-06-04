@@ -1,4 +1,4 @@
-﻿@model ControlEquipos.Web.Models.Stadium
+﻿@model ControlEquipos.Web.Models.Stadia
 
 @{
     ViewBag.Title = "Details";
@@ -10,7 +10,7 @@
         <div class="p-5">
             <dd>
                 <center>
-                    <img src="@Url.Action("getImage","Stadiums", new { Id = Model.Id,  })" width="450" height="380" class="img-thumbnail border-dark bg-success" />
+                    <img src="@Url.Action("getImage","Stadia", new { Id = Model.Id,  })" width="450" height="380" class="img-thumbnail border-dark bg-success" />
                     <br />
                 </center>
             </dd>
@@ -59,7 +59,7 @@
                             </dd>
 
                         </div>
-                   
+
                         <div class="col-md-6">
                             <dt>
 
@@ -71,7 +71,7 @@
                             </dd>
 
                         </div>
-                
+
                         <div class="col-md-6">
                             <dt>
                                 <b>Direccion del Estadio:</b>
@@ -84,7 +84,7 @@
 
                     </h5>
 
-                    
+
 
                 </div>
                 <br />

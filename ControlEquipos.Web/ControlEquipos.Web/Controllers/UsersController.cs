@@ -16,6 +16,8 @@ namespace ControlEquipos.Web.Controllers
         // GET: Users
         public ActionResult Index()
         {
+            ViewBag.Owner = (from o in db.Owners
+                             select o).ToList();
             return View();
         }
 
