@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group class=" col-md-7"">
-                            <label class="col-md-7"><b>Dueño del Equipo:</b></label>
+                            <label class="col-md-7"><b> ID Dueño del Equipo:</b></label>
                             <div class="col-md-10">
                                 <select name="OwnerID" class="form-control">
                                     <option>Elige al Dueño:</option>
@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="col-md-7"><b>Agrega la Imagen del Estadio:</b></label>
+                        <label class="col-md-7"><b>Agrega la Imagen del Futbolista:</b></label>
                         @*Html.EditorFor(model => model.Imagen, new { htmlAttributes = new { @class = "form-control" } })*@
                         <div class="col-md-10">
                             <img src="@Url.Action("getImage", "Teams")" />

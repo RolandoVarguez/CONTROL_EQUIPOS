@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group class=" col-md-7"">
-                            <label class="col-md-7"><b>Dueño del Equipo:</b></label>
+                            <label class="col-md-7"><b> ID Dueño del Equipo:</b></label>
                             <div class="col-md-10">
                                 <select name="OwnerID" class="form-control">
                                     <option>Elige tu id Dueño:</option>
@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="col-md-7"><b>Agrega la Imagen del Estadio:</b></label>
+                        <label class="col-md-7"><b>Agrega la Imagen del Futbolista:</b></label>
                         @*Html.EditorFor(model => model.Imagen, new { htmlAttributes = new { @class = "form-control" } })*@
                         <div class="col-md-10">
                             <img src="@Url.Action("getImage", "Teams")" />
@@ -89,7 +89,7 @@
                 </div>
                 <center>
                     <div class="col-md-6">
-                        <input type="submit" value="Agregar Estadio" class="btn btn-outline-success btn-md btn-block col-md-12" />
+                        <input type="submit" value="Agregar Equipo" class="btn btn-outline-success btn-md btn-block col-md-12" />
                         @Html.ActionLink("Volver a la Lista", "Index", "Teams", null, new { @class = "btn btn-warning btn-md btn-block" })
                     </div>
                 </center>

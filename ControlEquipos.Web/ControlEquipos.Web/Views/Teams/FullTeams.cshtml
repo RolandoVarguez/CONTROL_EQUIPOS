@@ -4,8 +4,9 @@
     ViewBag.Title = "FullTeams";
 }
 
-<h2 class="text-center m-3"><b>Equipos de la Liga</b></h2>
-
+    <div class="bg-dark">
+        <h2 class="text-center m-3 text-white"><b>Todos los Equipos</b></h2>
+    </div>
 
 <div class="row justify-content-center m-3">
     @foreach (var item in Model)
@@ -18,7 +19,7 @@
                                 <img class="card-img-top justify-content-center m-2" src="@Url.Action("getImage", "Teams", new{ id=item.Id})" alt="Comida" width=100 height=200>
                                 <div class="h2 text-center text-dark font-weight-bold  mb-1"> @item.TeamName</div>
                                 <p></p>
-                                <div class=" h5 mb-0 text-justify  text-dark"><b>Ciudad:</b> @item.Location .</div>
+                                <div class=" h5 mb-0 text-dark"><b>Ciudad:</b> @item.Location .</div>
                                 <p></p>
 
                                 @if (item.Championships == 0)
@@ -27,7 +28,7 @@
                                 }
                                 @if (item.Championships == 1)
                                 {
-                                    <div class=" h5 mb-0 text-center  text-dark"><b>Campeonato:</b>Tiene @item.Championships campeonato de Liga</div>
+                                    <div class=" h5 mb-0 text-center  text-dark">Tiene @item.Championships campeonato de Liga</div>
                                 }
                                 @if (item.Championships >= 2)
                                 {
