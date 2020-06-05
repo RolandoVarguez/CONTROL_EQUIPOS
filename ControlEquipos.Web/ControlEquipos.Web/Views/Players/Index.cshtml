@@ -8,7 +8,7 @@
 <h2 class="text-center">Control de Jugadores</h2>
 <br />
 <div class="container">
-    <table class="table container" id="jugadores">
+    <table class="table container" id="myjugadores">
         <thead class="thead-dark border-dark">
             <tr>
                 <th scope="col">id</th>
@@ -46,10 +46,10 @@
 </div>
 
 
-@section Scripts{
-<script>
-    $(document).ready(function () {
-        $('#jugadores').DataTable();
-    });
-</script>
-    }
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#myjugadores').DataTable();
+        });
+    </script>
+}

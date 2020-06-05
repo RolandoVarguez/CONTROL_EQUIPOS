@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <label class="col-md-7"><b>Fecha de Nacimiento:</b></label>
                             <div class="col-md-10">
-                                <input type="date" name="BornDate" value="" class="form-control" />
+                                @Html.EditorFor(model => model.BornDate, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.BornDate, "", new { @class = "text-danger" })
                             </div>
                         </div>

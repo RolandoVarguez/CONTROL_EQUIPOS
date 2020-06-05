@@ -34,8 +34,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="col-md-7"><b>Fecha de Fundacion:</b></label>
-                            <div class="col-md-10">
-                                <input type="date" name="Foundation" value=""  class="form-control"/>
+                            <div class="col-md-10">                               
+                                @Html.EditorFor(model => model.FoundationDate, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.FoundationDate, "", new { @class = "text-danger" })
                             </div>
                         </div>
