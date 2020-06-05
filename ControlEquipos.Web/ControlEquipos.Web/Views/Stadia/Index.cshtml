@@ -19,7 +19,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <center>
-                                    <a href="@Url.Action("Edit","Stadia", new { id= item.Id})"><img src="@Url.Action("getImage","Stadia", new {Id = item.Id, @class="card-img-top" })" width="270" height="200" /></a>
+                                    <a href="@Url.Action("Delete","Stadia", new { id= item.Id})"><img src="@Url.Action("getImage","Stadia", new {Id = item.Id, @class="card-img-top" })" width="270" height="200" /></a>
 
                                 </center>
                                 <br />
@@ -31,8 +31,8 @@
                         </div>
                         <center class="m-2">
 
-                            @Html.ActionLink("Consultar", "Details", new { id = item.Id }, new { @class = "btn btn-block btn-outline-dark" })
-                            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-block btn-danger" })
+                            @Html.ActionLink("Consultar", "Details", new { id = item.Id }, new { @class = "btn btn-block btn-outline-info" })
+                            @Html.ActionLink("Modificar", "Edit", new { id = item.Id }, new { @class = "btn btn-block btn-warning" })
                         </center>
                     </div>
                     <div class="card-header bg-success"></div>

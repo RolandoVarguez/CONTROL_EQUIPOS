@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ControlEquipos.Web.Models.Stadia>
+
+@{
+    ViewBag.Title = "FullStadiums";
+}
+
+<h2 class="text-center m-3"><b>Todos los jugadores</b></h2>
+<div class="row justify-content-center m-3">
+    @foreach (var item in Model)
+    {
+        <div class="col-xl-3 col-md-6 mb-4">
+
+            <div class="card border-success shadow h-100 py-2">
+                <div class="card-body ">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <img class="card-img-top justify-content-center m-2" src="@Url.Action("getImage", "Stadia", new{ id=item.Id})" alt="Jugador" width=100 height=200>
+                            <div class=" h5 mb-0 text-center  text-dark"><h2> @item.StadiumName</h2></div>
+                            <p></p>
+                            <div class=" h5 mb-0  text-center">Capacidad de  @item.Capacity espectadores</div>
+                            <p></p>
+                            <div class=" h5 mb-0 text-center  text-dark"> @item.About</div>
+
+                        </div>
+                    </div>
+                    <center>
+                        <div>
+                            <i class="fas fa-walking fa-3x text-white"></i>
+                        </div>
+                    </center>
+                    <center>
+                        <div class="m-2">
+                            @Html.ActionLink("Detalles", "FullDetails", new { id = item.Id }, new { @class = "btn btn-info btn-block" })
+                        </div>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>

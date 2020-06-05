@@ -4,63 +4,84 @@
     ViewBag.Title = "FullDetails";
 }
 
-<h2>FullDetails</h2>
+<div class=" m-4">
+    <div class="row justify-content-between">
 
-<div>
-    <h4>Team</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Owner.UserId)
-        </dt>
+        <div class="p-5">
+            <dd>
+                <center>
+                    <img src="@Url.Action("getImage", "Teams", new { Id = Model.Id, })" width="380" height="380" class="img-thumbnail border-dark bg-success" />
+                    <br />
+                </center>
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Owner.UserId)
-        </dd>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TeamName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TeamName)
-        </dd>
+        <div class="card container" style="width:45rem">
+            <br />
+            <div class="card-header bg-success"></div>
+            <label class="text-center m-2"><b><h4>Detalles de Equipo</h4></b></label>
+            <div class="card-body col-md-12">
+                <div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FoundationDate)
-        </dt>
+                    <h5>
+                        <div class="col-md-6">
+                            <dt>
+                                <b>Equipo Actual:</b>
+                            </dt>
+                            <p></p>
 
-        <dd>
-            @Html.DisplayFor(model => model.FoundationDate)
-        </dd>
+                            <dd>
+                                <label>@Html.DisplayFor(model => model.TeamName)</label>
+                            </dd>
+                        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
+                        <div class="col-md-6">
+                            <dt>
+                                <b>Fecha de Creacion:</b>
+                            </dt>
+                            <p></p>
+                            <dd>
+                                @Html.DisplayFor(model => model.FoundationDate)
+                            </dd>
+                        </div>
+                        <p></p>
+                        <div class="col-md-6">
+                            <dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
+                                <b>Ubicacion del Equipo:</b>
+                            </dt>
+                            <p></p>
+                            <dd>
+                                @Html.DisplayFor(model => model.Location)
+                            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Championships)
-        </dt>
+                        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Championships)
-        </dd>
+                        <p></p>
+                        <div class="col-md-6">
+                            <dt>
+                                <b>Campeonatos:</b>
+                            </dt>
+                            <p></p>
+                            <dd>
+                                @Html.DisplayFor(model => model.Championships)
+                            </dd>
+                        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </dt>
+                    </h5>
+                    <br />
+                    <div>
+                        @Html.ActionLink("Volver a la Lista", "FullTeams", "Teams", null, new { @class = "btn btn-lg btn-block btn-outline-warning" })
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Imagen)
-        </dd>
+                </div>
+            </div>
+            <div class="card-footer bg-success"></div>
+            <br />
 
-    </dl>
+        </div>
+
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

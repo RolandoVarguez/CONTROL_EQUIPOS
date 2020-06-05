@@ -4,56 +4,54 @@
     ViewBag.Title = "FullTeams";
 }
 
-<h2>FullTeams</h2>
+<h2 class="text-center m-3"><b>Equipos de la Liga</b></h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Owner.UserId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TeamName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FoundationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Championships)
-        </th>
 
-        <th></th>
-    </tr>
+<div class="row justify-content-center m-3">
+    @foreach (var item in Model)
+    {
+        <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-success shadow h-100 py-2 bg-white">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <img class="card-img-top justify-content-center m-2" src="@Url.Action("getImage", "Teams", new{ id=item.Id})" alt="Comida" width=100 height=200>
+                                <div class="h2 text-center text-dark font-weight-bold  mb-1"> @item.TeamName</div>
+                                <p></p>
+                                <div class=" h5 mb-0 text-justify  text-dark"><b>Ciudad:</b> @item.Location .</div>
+                                <p></p>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Owner.UserId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TeamName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FoundationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Championships)
-        </td>
+                                @if (item.Championships == 0)
+                                {
+                                    <div class=" h5 mb-0 text-center  text-dark">No tiene campeonatos aun</div>
+                                }
+                                @if (item.Championships == 1)
+                                {
+                                    <div class=" h5 mb-0 text-center  text-dark"><b>Campeonato:</b>Tiene @item.Championships campeonato de Liga</div>
+                                }
+                                @if (item.Championships >= 2)
+                                {
+                                    <div class=" h5 mb-0 text-center  text-dark"> Tiene @item.Championships campeonatos de Liga</div>
+                                }
 
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "FullDetails", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+                            </div>
 
-</table>
+                        </div>
+                        <center>
+                            <div>
+                                <i class="fas fa-users fa-3x text-white"></i>
+                            </div>
+                        </center>
+                        <center>
+                            <div class="m-2">
+                                @Html.ActionLink("Detalles", "FullDetails", new { id = item.Id }, new { @class = "btn btn-info btn-block" })
+                            </div>
+                        </center>
+                    </div>
+
+                </div>
+        </div>
+
+    }
+
+</div>

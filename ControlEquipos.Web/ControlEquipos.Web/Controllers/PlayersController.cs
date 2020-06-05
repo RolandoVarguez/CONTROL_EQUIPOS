@@ -219,7 +219,7 @@ namespace ControlEquipos.Web.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Team = (from t in db.Owners
+            ViewBag.Team = (from t in db.Teams
                             select t).ToList();
             return View(player);
         }

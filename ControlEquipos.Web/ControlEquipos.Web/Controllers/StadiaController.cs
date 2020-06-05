@@ -17,8 +17,8 @@ namespace ControlEquipos.Web.Controllers
     public class StadiaController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-  
 
+        [Authorize]
         public ActionResult AllStadiums()
         {
             var estadio = db.Stadiums.Include(o => o.Owner).Include(u => u.Owner.ApplicationUser).ToList();
@@ -26,6 +26,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Stadia
+        [Authorize]
         public ActionResult Index()
         {
             var stadiums = db.Stadiums.Include(s => s.Owner);
@@ -33,6 +34,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Stadia/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -44,13 +46,17 @@ namespace ControlEquipos.Web.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Owner = (from t in db.Owners
+                            select t).ToList();
             return View(stadia);
         }
 
         // GET: Stadia/Create
+        [Authorize]
         public ActionResult Create()
         {
-            
+            ViewBag.Owner = (from t in db.Owners
+                             select t).ToList();
             ViewBag.OwnerID = new SelectList(db.Owners, "Id", "UserId");
             return View();
         }
@@ -89,6 +95,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Stadia/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             ViewBag.Owner = (from o in db.Owners
@@ -102,6 +109,8 @@ namespace ControlEquipos.Web.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Owner = (from t in db.Owners
+                             select t).ToList();
             ViewBag.OwnerID = new SelectList(db.Owners, "Id", "UserId", stadia.OwnerID);
             return View(stadia);
         }
@@ -146,6 +155,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Stadia/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -205,7 +215,7 @@ namespace ControlEquipos.Web.Controllers
         }
 
         // GET: Stadiums/Details/5
-        [Authorize]
+    
         public ActionResult FullDetails(int? id)
         {
             if (id == null)

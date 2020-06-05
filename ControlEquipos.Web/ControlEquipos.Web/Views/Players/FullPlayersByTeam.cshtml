@@ -4,66 +4,39 @@
     ViewBag.Title = "FullPlayersByTeam";
 }
 
-<h2>FullPlayersByTeam</h2>
+<h2 class="text-center m-3">Jugadores del equipo </h2>
+<hr class="bg-dark " />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <center>
+            <div class="col-xl-3 col-md-3 mb-4 m-3">
+                <div class="card border-bottom-dark shadow  border-left-dark shadow h-100 py-2 " style="width: 20rem">
+                    <div class="card-header bg-dark"></div>
+                    <div class="card-body">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Team.TeamName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PlayerName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PlayerLastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nationality)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BornDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.About)
-        </th>
-        <th></th>
-    </tr>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <center>
+                                    <img src="@Url.Action("getImage","Players", new {Id = item.Id })" width="200" height="200" />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Team.TeamName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlayerName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlayerLastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nationality)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BornDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Imagen)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.About)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+                                </center>
+                                <br />
+                                <div class="text-xs text-lg-left mb-1"><b>Nombre:</b> @item.PlayerName @item.PlayerLastName</div>
+                                <div class="text-xs text-lg-left mb-1"><b>Nacionalidad:</b> @item.Nationality</div>
 
-</table>
+                            </div>
+                            <br />
+                        </div>
+                        <center class="m-2">
+                            @Html.ActionLink("Detalles", "FullDetails", new { id = item.Id }, new { @class = "btn btn-block btn-outline-dark" })
+                        </center>
+                    </div>
+                    <div class="card-header bg-dark"></div>
+
+                </div>
+            </div>
+        </center>
+
+    }
+</div>

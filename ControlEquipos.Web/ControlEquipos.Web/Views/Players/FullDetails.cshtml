@@ -1,69 +1,113 @@
-﻿@model IEnumerable<ControlEquipos.Web.Models.Player>
+﻿@model ControlEquipos.Web.Models.Player
 
 @{
     ViewBag.Title = "FullDetails";
 }
 
-<h2>FullDetails</h2>
+<div class=" m-4">
+    <div class="row justify-content-between">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Team.TeamName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PlayerName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PlayerLastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nationality)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BornDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.About)
-        </th>
-        <th></th>
-    </tr>
+        <div class="p-5">
+            <dd>
+                <center>
+                    <img src="@Url.Action("getImage","Players", new { Id = Model.Id,  })" width="400" height="380" class="img-thumbnail border-dark bg-success" />
+                    <br />
+                </center>
+            </dd>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Team.TeamName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlayerName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PlayerLastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nationality)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BornDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Imagen)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.About)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+        </div>
 
-</table>
+
+        <div class="card container" style="width:45rem">
+            <br />
+            <div class="card-header bg-success"></div>
+            <label class="text-center m-2"><b><h4>Detalles del Jugador</h4></b></label>
+            <div class="card-body col-md-12">
+                <div>
+
+                    <h5>
+                        <div class="col-md-6">
+                            <dt>
+                                <b>Equipo Actual:</b>
+                            </dt>
+
+
+                            <dd>
+                                <label>@Html.DisplayFor(model => model.Team.TeamName)</label>
+                            </dd>
+                        </div>
+
+                        <div class="col-md-6">
+                            <dt>
+                                <b>Nombre:</b>
+
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.PlayerName)
+                            </dd>
+                        </div>
+
+
+
+                        <div class="col-md-6">
+                            <dt>
+                                <b>Apellido:</b>
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.PlayerLastName)
+                            </dd>
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <dt>
+
+                                <b>Nacionalidad:</b>
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Nationality)
+                            </dd>
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <dt>
+                                <b>Fecha de Nacimiento:</b>
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.BornDate)
+                            </dd>
+                        </div>
+
+
+
+
+                    </h5>
+
+                    <dt>
+                        <center>
+                            <h5><b class="text-center"><b>Biografia:</b></h5>
+                        </center>
+                    </dt>
+
+                    <dd>
+                        <h5><label class="text-justify">@Html.DisplayFor(model => model.About)</label></h5>
+                    </dd>
+
+                </div>
+                <br />
+                <div>
+                    @Html.ActionLink("Volver a la Lista", "FullPlayers", null, new { @class = "btn btn-lg btn-block btn-outline-warning" })
+                </div>
+            </div>
+            <div class="card-footer bg-success"></div>
+            <br />
+
+        </div>
+
+    </div>
+</div>

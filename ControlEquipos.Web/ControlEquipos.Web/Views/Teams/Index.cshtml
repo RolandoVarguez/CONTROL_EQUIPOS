@@ -21,9 +21,9 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <center>
-                                    <img src="@Url.Action("getImage","Teams", new {Id = item.Id, @class="card-img-top" })" width="200" height="200" />
+                                    <a href="@Url.Action("Delete","Teams", new { id= item.Id})"><img src="@Url.Action("getImage","Teams", new {Id = item.Id, @class="card-img-top" })" width="200" height="200" /></a>
 
-                                </center>
+</center>
                                 <br />
                                 <div class="text-xs text-lg-left mb-1"><b>Nombre:</b> @item.TeamName</div>
                                 <div class="text-xs text-lg-left mb-1"><b>Ciudad:</b> @item.Location</div>
@@ -33,8 +33,8 @@
                         </div>
                         <center class="m-2">
 
-                            @Html.ActionLink("Consultar", "Details", new { id = item.Id }, new { @class = "btn btn-block btn-outline-dark" })
-                            @Html.ActionLink("Modificar", "Edit", new { id = item.Id }, new { @class = "btn btn-block btn-dark" })
+                            @Html.ActionLink("Consultar", "Details", new { id = item.Id }, new { @class = "btn btn-block btn-outline-info" })
+                            @Html.ActionLink("Modificar", "Edit", new { id = item.Id }, new { @class = "btn btn-block btn-warning" })
 
                         </center>
                     </div>

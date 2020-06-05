@@ -19,6 +19,7 @@ namespace ControlEquipos.Web.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        [Authorize]
         public ActionResult AllTeams()
         {
             var pets = db.Teams.Include(o => o.Owner).Include(u => u.Owner.ApplicationUser).ToList();
